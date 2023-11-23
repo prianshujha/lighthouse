@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lighthouse</title>
+    <link rel="stylesheet" href="tablestyle.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        td span {
+            font-size: 18px;
+            margin-left: 5px;
+        }
+
+        .running {
+            color: #27ae60;
+        }
+
+        .not-running {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lighthouse</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for service in services_status %}
+                <tr>
+                    <td>{{ service.name }}</td>
+                    {% if service.status == 0 %}
+                        <td class="running">Running <span>&#9989;</span></td>
+                    {% else %}
+                        <td class="not-running">Not running <span>&#10060;</span></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
